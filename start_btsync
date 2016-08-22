@@ -1,0 +1,16 @@
+#!/bin/bash
+# 08/21/2016
+# piOS: raspbian jessie
+
+cd /home/pi
+mkdir btsync
+chown pi:pi btSync
+cd btsync
+
+wget http://download-lb.utorrent.com/endpoint/btsync/os/linux-arm/track/stable -O btsync_arm_stable.tar
+tar -xvf btsync_arm_stable.tar
+
+./btsync --dump-sample-config > btsync.conf
+chown pi:pi btsync.conf
+
+sudo ./btsync --config btsync.conf
